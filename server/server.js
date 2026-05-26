@@ -23,14 +23,14 @@ app.use((err, req, res, next) => {
 async function start() {
   try {
     await sequelize.authenticate();
-    console.log('✅ База данных подключена');
-    
+    console.log('База данных подключена');
+
     await sequelize.sync({ alter: true });
-    console.log('✅ Модели синхронизированы');
-    
+    console.log('Модели синхронизированы');
+
     const { User } = require('./models');
     const adminExists = await User.findOne({ where: { role: 'admin' } });
-    
+
     if (!adminExists) {
       await User.create({
         login: process.env.ADMIN_LOGIN || 'Admin26',
@@ -40,15 +40,15 @@ async function start() {
         email: 'admin@banketam.net',
         role: 'admin'
       });
-      
-      console.log('✅ Администратор создан');
+
+      console.log('Администратор создан');
     }
-    
+
     app.listen(PORT, () => {
-      console.log(`🚀 Сервер запущен на порту ${PORT}`);
+      console.log(`Сервер запущен на порту ${PORT}`);
     });
   } catch (error) {
-    console.error('❌ Ошибка при запуске сервера:', error);
+    console.error('Ошибка при запуске сервера:', error);
     process.exit(1);
   }
 }

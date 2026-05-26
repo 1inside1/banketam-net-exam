@@ -2,10 +2,6 @@ export default {
   name: 'Banketam',
   title: 'Банкетам.Нет',
   description: 'Бронирование помещений для проведения банкетов',
-  theme: {
-    primary: 'banquet',
-    logo: '🎉'
-  },
   admin: {
     login: 'Admin26',
     password: 'Demo20'
@@ -55,11 +51,7 @@ export default {
     }
   },
   features: {
-    reviews: true,
-    reviewOnlyAfterStatusChange: true,
-    deleteApplications: false,
-    mobileDesign: true,
-    adminFeatures: ['filter', 'pagination', 'popups', 'sort']
+    reviews: true
   },
   labels: {
     applicationName: 'Заявка на бронирование',

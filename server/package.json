@@ -1,7 +1,7 @@
 {
-  "name": "exam-server",
+  "name": "banketam-server",
   "version": "1.0.0",
-  "description": "exam-ui",
+  "description": "Банкетам.Нет API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

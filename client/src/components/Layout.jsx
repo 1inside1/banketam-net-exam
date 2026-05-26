@@ -108,7 +108,6 @@ export default function Layout() {
         </div>
       </header>
 
-      {/* Mobile menu */}
       <nav className="md:hidden bg-white border-b border-banquet-peach">
         <div className="px-4 py-2 space-y-1">
           {user.role === 'admin' ? (

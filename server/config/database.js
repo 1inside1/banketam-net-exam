@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'exam_db',
+  process.env.DB_NAME || 'new1',
   process.env.DB_USER || 'postgres',
   process.env.DB_PASSWORD || 'password',
   {
