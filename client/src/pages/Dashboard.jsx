@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import PageLogo from '../components/PageLogo'
+import ImageSlider from '../components/ImageSlider'
 
 const rooms = [
   { img: '/assets/3505f015e0d26644e8e4c.jpg', label: 'Зал' },
@@ -17,26 +18,23 @@ export default function Dashboard() {
   const { config } = useConfig()
 
   return (
-    <div className="space-y-6 animate-in">
-      <div className="relative rounded-lg overflow-hidden h-40">
-        <img src="/assets/unnamed.webp" alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-banquet-navy/80 via-banquet-navy/40 to-transparent flex items-end p-4">
-          <div className="flex items-center gap-3">
-            <PageLogo className="h-10 w-10 brightness-110" />
-            <div>
-              <h1 className="text-white text-2xl leading-tight drop-shadow-md !text-white">
-                Добро пожаловать, {user.fullName}!
-              </h1>
-              <p className="text-banquet-sand text-sm">{config.description}</p>
-            </div>
-          </div>
+    <div className="space-y-5 animate-in">
+      <div className="flex items-center gap-3">
+        <PageLogo className="h-11 w-11" />
+        <div>
+          <h1 className="!text-[28px] leading-tight">
+            Добро пожаловать, {user.fullName.split(' ')[0]}!
+          </h1>
+          <p className="text-secondary">{config.description}</p>
         </div>
       </div>
 
+      <ImageSlider />
+
       {user.role === 'admin' && (
-        <div className="card border-banquet-gold/40 bg-banquet-sand/30">
-          <p className="text-sm text-banquet-taupe mb-3">
-            Вы вошли как администратор. Перейдите в панель управления.
+        <div className="card border-banquet-gold/50 bg-banquet-cream">
+          <p className="text-sm text-banquet-green mb-3">
+            Вы вошли как администратор.
           </p>
           <Link to="/admin/dashboard" className="btn-primary inline-flex">
             Панель админа
@@ -48,23 +46,21 @@ export default function Dashboard() {
         <h2>Наши помещения</h2>
         <div className="grid grid-cols-2 gap-3 mt-3">
           {rooms.map((room) => (
-            <div key={room.label} className="rounded-xl overflow-hidden border border-banquet-sand shadow-sm bg-white">
+            <div key={room.label} className="rounded-xl overflow-hidden border border-banquet-peach shadow-sm bg-white">
               <img src={room.img} alt={room.label} className="h-24 w-full object-cover" />
-              <p className="text-center text-sm py-2.5 text-banquet-wine font-medium">{room.label}</p>
+              <p className="text-center text-sm py-2.5 text-banquet-red font-medium">{room.label}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
-        <div className="card">
-          <h3 className="!text-banquet-taupe">Профиль</h3>
-          <p className="text-base mt-1 text-banquet-ink">{user.role === 'admin' ? 'Администратор' : 'Пользователь'}</p>
-          <p className="text-sm text-banquet-muted mt-2">{user.email}</p>
-          <p className="text-xs text-banquet-muted">
-            Регистрация: {user.createdAt ? format(new Date(user.createdAt), 'd MMMM yyyy', { locale: ru }) : 'Сегодня'}
-          </p>
-        </div>
+      <div className="card">
+        <h3>Профиль</h3>
+        <p className="text-base mt-1">{user.role === 'admin' ? 'Администратор' : 'Пользователь'}</p>
+        <p className="text-sm mt-2">{user.email}</p>
+        <p className="text-secondary mt-1">
+          Регистрация: {user.createdAt ? format(new Date(user.createdAt), 'd MMMM yyyy', { locale: ru }) : 'Сегодня'}
+        </p>
       </div>
 
       <div className="card">

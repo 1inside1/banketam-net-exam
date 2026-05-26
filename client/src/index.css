@@ -18,24 +18,24 @@
 
 @layer base {
   body {
-    @apply antialiased font-oswald;
+    @apply antialiased font-oswald text-base;
     background-color: theme('colors.banquet.cream');
     color: theme('colors.banquet.ink');
   }
 
   h1 {
-    @apply text-[32px] font-bold tracking-tight;
-    color: theme('colors.banquet.navy');
+    @apply text-[36px] font-bold tracking-tight;
+    color: theme('colors.banquet.red');
   }
 
   h2 {
     @apply text-2xl font-semibold;
-    color: theme('colors.banquet.wine');
+    color: theme('colors.banquet.gold');
   }
 
   h3 {
     @apply text-lg font-medium;
-    color: theme('colors.banquet.taupe');
+    color: theme('colors.banquet.gold');
   }
 }
 
@@ -46,62 +46,63 @@
   
   .btn-primary {
     @apply btn text-white;
-    background-color: theme('colors.banquet.wine');
+    background-color: theme('colors.banquet.red');
   }
 
   .btn-primary:hover:not(:disabled) {
-    background-color: theme('colors.banquet.wine-dark');
+    background-color: #B01030;
   }
 
   .btn-primary:focus {
-    --tw-ring-color: theme('colors.banquet.wine');
+    --tw-ring-color: theme('colors.banquet.red');
   }
   
   .btn-secondary {
     @apply btn border;
-    color: theme('colors.banquet.navy');
-    background-color: theme('colors.banquet.sand');
-    border-color: theme('colors.banquet.sand');
+    color: theme('colors.banquet.ink');
+    background-color: theme('colors.banquet.peach');
+    border-color: theme('colors.banquet.peach');
   }
 
   .btn-secondary:hover:not(:disabled) {
-    background-color: rgb(196 163 90 / 0.3);
+    background-color: theme('colors.banquet.gold');
+    color: white;
   }
   
   .input {
     @apply block w-full px-3 py-2.5 rounded-lg shadow-sm text-base bg-white focus:outline-none focus:ring-2;
-    border: 1px solid theme('colors.banquet.sand');
+    border: 1px solid theme('colors.banquet.peach');
     color: theme('colors.banquet.ink');
   }
 
   .input::placeholder {
-    color: theme('colors.banquet.muted');
+    color: #666;
   }
 
   .input:focus {
-    border-color: theme('colors.banquet.wine');
-    --tw-ring-color: rgb(123 59 75 / 0.3);
+    border-color: theme('colors.banquet.gold');
+    --tw-ring-color: rgb(218 165 32 / 0.35);
   }
   
   .input-error {
-    border-color: theme('colors.banquet.error');
-    color: theme('colors.banquet.error');
+    border-color: theme('colors.banquet.red');
+    color: theme('colors.banquet.red');
   }
 
   .input-error:focus {
-    border-color: theme('colors.banquet.error');
-    --tw-ring-color: rgb(180 35 24 / 0.3);
+    border-color: theme('colors.banquet.red');
+    --tw-ring-color: rgb(220 20 60 / 0.3);
   }
   
   .label {
     @apply block text-sm font-medium mb-1;
-    color: theme('colors.banquet.taupe');
+    color: theme('colors.banquet.gold');
   }
   
   .card {
     @apply bg-white rounded-xl p-6;
     box-shadow: theme('boxShadow.card');
-    border: 1px solid rgb(232 226 217 / 0.8);
+    border: 1px solid theme('colors.banquet.peach');
   }
   
   .animate-in {
@@ -116,11 +117,16 @@
 
   .link-accent {
     @apply font-medium underline-offset-2 hover:underline;
-    color: theme('colors.banquet.wine');
+    color: theme('colors.banquet.red');
   }
 
   .link-accent:hover {
-    color: theme('colors.banquet.wine-dark');
+    color: #B01030;
+  }
+
+  .text-secondary {
+    @apply text-xs;
+    color: theme('colors.banquet.green');
   }
 }
 
@@ -140,6 +146,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: theme('colors.banquet.sand');
+  background-color: theme('colors.banquet.peach');
   border-radius: 9999px;
 }

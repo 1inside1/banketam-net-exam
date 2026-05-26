@@ -7,42 +7,39 @@ export default {
   safelist: [
     'shadow-card',
     {
-      pattern: /banquet-(navy|ink|cream|sand|taupe|wine|gold|muted|error|wine-dark)/,
+      pattern: /banquet-(gold|peach|cream|red|green|ink|muted)/,
     },
   ],
   theme: {
     extend: {
       colors: {
         banquet: {
-          navy: '#1A2332',
-          ink: '#2C3344',
-          cream: '#FAF8F5',
-          sand: '#E8E2D9',
-          taupe: '#8B7355',
-          wine: '#7B3B4B',
-          'wine-dark': '#5E2D38',
-          gold: '#C4A35A',
-          muted: '#6B7280',
-          error: '#B42318',
+          gold: '#DAA520',
+          peach: '#FFDAB9',
+          cream: '#FFFDD0',
+          red: '#DC143C',
+          green: '#006400',
+          ink: '#000000',
+          muted: '#006400',
         },
         primary: {
-          50: '#F9F5F6',
-          100: '#F0E4E7',
-          200: '#E1C9CF',
-          300: '#C995A3',
-          400: '#A85F73',
-          500: '#7B3B4B',
-          600: '#7B3B4B',
-          700: '#5E2D38',
-          800: '#452129',
-          900: '#1A2332',
+          50: '#FFFDD0',
+          100: '#FFDAB9',
+          200: '#FFDAB9',
+          300: '#DAA520',
+          400: '#DAA520',
+          500: '#DC143C',
+          600: '#DC143C',
+          700: '#B01030',
+          800: '#006400',
+          900: '#004d00',
         }
       },
       fontFamily: {
         oswald: ['Oswald', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 4px 24px rgba(26, 35, 50, 0.08)',
+        card: '0 4px 20px rgba(218, 165, 32, 0.15)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

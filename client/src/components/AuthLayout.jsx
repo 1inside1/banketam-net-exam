@@ -9,12 +9,12 @@ export default function AuthLayout({ title, subtitle, children, image = '/assets
           alt=""
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-banquet-navy/85 via-banquet-navy/50 to-banquet-navy/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
         <div className="relative z-10 flex flex-col items-center justify-end h-full px-4 pb-6 text-center">
           <PageLogo className="h-11 w-11 mb-2 drop-shadow-md brightness-110" />
           <h1 className="text-white drop-shadow text-[26px] leading-tight">{title}</h1>
           {subtitle && (
-            <p className="text-banquet-sand text-sm mt-1">{subtitle}</p>
+            <p className="text-banquet-peach text-sm mt-1">{subtitle}</p>
           )}
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function AuthLayout({ title, subtitle, children, image = '/assets
           <img src="/social/soc.png" alt="" className="h-7 w-7 object-contain" />
           <img src="/social/social.jpg" alt="" className="h-7 w-7 object-contain rounded-full" />
         </div>
-        <p className="text-xs text-banquet-muted text-center">Банкетам.Нет — бронирование банкетных залов</p>
+        <p className="text-secondary text-center">Банкетам.Нет — бронирование банкетных залов</p>
       </footer>
     </div>
   )
