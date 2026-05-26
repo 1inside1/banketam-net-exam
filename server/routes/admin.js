@@ -4,7 +4,6 @@ const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 const { Application, User } = require('../models');
 const { Op } = require('sequelize');
 
-// Получить все заявки (для админа)
 router.get('/applications', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { status, type, search, page = 1, limit = 10 } = req.query;
@@ -44,7 +43,6 @@ router.get('/applications', authMiddleware, adminMiddleware, async (req, res) =>
   }
 });
 
-// Обновить статус заявки
 router.put('/applications/:id/status', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
@@ -67,7 +65,6 @@ router.put('/applications/:id/status', authMiddleware, adminMiddleware, async (r
   }
 });
 
-// Удалить заявку (для админа)
 router.delete('/applications/:id', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
@@ -85,7 +82,6 @@ router.delete('/applications/:id', authMiddleware, adminMiddleware, async (req, 
   }
 });
 
-// Получить статистику
 router.get('/stats', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const totalApplications = await Application.count();

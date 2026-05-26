@@ -3,7 +3,6 @@ const router = express.Router();
 const { authMiddleware } = require('../middleware/auth');
 const { Application, User } = require('../models');
 
-// Получить все заявки пользователя
 router.get('/', authMiddleware, async (req, res) => {
   try {
     const applications = await Application.findAll({
@@ -22,7 +21,6 @@ router.get('/', authMiddleware, async (req, res) => {
   }
 });
 
-// Создать новую заявку
 router.post('/', authMiddleware, async (req, res) => {
   try {
     const { type, data } = req.body;
@@ -44,7 +42,6 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-// Обновить заявку (для отзывов)
 router.put('/:id', authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
@@ -58,7 +55,6 @@ router.put('/:id', authMiddleware, async (req, res) => {
       return res.status(404).json({ message: 'Заявка не найдена' });
     }
     
-    // Проверка, что заявка завершена
     if (application.status === 'new') {
       return res.status(400).json({ message: 'Отзыв можно оставить после обработки заявки администратором' });
     }
@@ -75,7 +71,6 @@ router.put('/:id', authMiddleware, async (req, res) => {
   }
 });
 
-// Удалить заявку
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;

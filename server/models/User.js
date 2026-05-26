@@ -56,7 +56,6 @@ const User = sequelize.define('User', {
   timestamps: true
 });
 
-// Метод для проверки пароля
 User.prototype.validatePassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };

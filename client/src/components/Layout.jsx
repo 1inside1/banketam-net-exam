@@ -1,6 +1,8 @@
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useConfig } from '../contexts/ConfigContext'
+import PageLogo from './PageLogo'
+import SocialLinks from './SocialLinks'
 import clsx from 'clsx'
 
 export default function Layout() {
@@ -18,12 +20,12 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen bg-banquet-cream app-shell md:max-w-none">
-      <header className="bg-white shadow-sm border-b border-banquet-peach">
+      <header className="bg-white/95 backdrop-blur shadow-sm border-b border-banquet-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <span className="text-2xl mr-3">{config.theme.logo}</span>
-              <h1 className="text-xl font-bold text-banquet-red">{config.title}</h1>
+            <div className="flex items-center gap-2">
+              <PageLogo className="h-9 w-9" />
+              <h1 className="text-xl font-bold text-banquet-navy">{config.title}</h1>
             </div>
             
             <nav className="hidden md:flex space-x-8">
@@ -34,8 +36,8 @@ export default function Layout() {
                     className={clsx(
                       'text-sm font-medium transition-colors',
                       isActive('/admin/dashboard')
-                        ? 'text-primary-600'
-                        : 'text-gray-500 hover:text-gray-900'
+                        ? 'text-banquet-wine'
+                        : 'text-banquet-muted hover:text-banquet-navy'
                     )}
                   >
                     Панель управления
@@ -45,8 +47,8 @@ export default function Layout() {
                     className={clsx(
                       'text-sm font-medium transition-colors',
                       isActive('/admin/applications')
-                        ? 'text-primary-600'
-                        : 'text-gray-500 hover:text-gray-900'
+                        ? 'text-banquet-wine'
+                        : 'text-banquet-muted hover:text-banquet-navy'
                     )}
                   >
                     Все заявки
@@ -59,8 +61,8 @@ export default function Layout() {
                     className={clsx(
                       'text-sm font-medium transition-colors',
                       isActive('/dashboard')
-                        ? 'text-primary-600'
-                        : 'text-gray-500 hover:text-gray-900'
+                        ? 'text-banquet-wine'
+                        : 'text-banquet-muted hover:text-banquet-navy'
                     )}
                   >
                     Главная
@@ -70,8 +72,8 @@ export default function Layout() {
                     className={clsx(
                       'text-sm font-medium transition-colors',
                       isActive('/applications')
-                        ? 'text-primary-600'
-                        : 'text-gray-500 hover:text-gray-900'
+                        ? 'text-banquet-wine'
+                        : 'text-banquet-muted hover:text-banquet-navy'
                     )}
                   >
                     {config.labels?.viewButton || 'Мои заявки'}
@@ -81,8 +83,8 @@ export default function Layout() {
                     className={clsx(
                       'text-sm font-medium transition-colors',
                       isActive('/applications/new')
-                        ? 'text-primary-600'
-                        : 'text-gray-500 hover:text-gray-900'
+                        ? 'text-banquet-wine'
+                        : 'text-banquet-muted hover:text-banquet-navy'
                     )}
                   >
                     {config.labels?.createButton || 'Новая заявка'}
@@ -116,8 +118,8 @@ export default function Layout() {
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   isActive('/admin/dashboard')
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-banquet-sand text-banquet-wine'
+                    : 'text-banquet-ink hover:bg-banquet-sand/50'
                 )}
               >
                 Панель управления
@@ -127,8 +129,8 @@ export default function Layout() {
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   isActive('/admin/applications')
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-banquet-sand text-banquet-wine'
+                    : 'text-banquet-ink hover:bg-banquet-sand/50'
                 )}
               >
                 Все заявки
@@ -141,8 +143,8 @@ export default function Layout() {
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   isActive('/dashboard')
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-banquet-sand text-banquet-wine'
+                    : 'text-banquet-ink hover:bg-banquet-sand/50'
                 )}
               >
                 Главная
@@ -152,8 +154,8 @@ export default function Layout() {
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   isActive('/applications')
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-banquet-sand text-banquet-wine'
+                    : 'text-banquet-ink hover:bg-banquet-sand/50'
                 )}
               >
                 {config.labels?.viewButton || 'Мои заявки'}
@@ -163,8 +165,8 @@ export default function Layout() {
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
                   isActive('/applications/new')
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-banquet-sand text-banquet-wine'
+                    : 'text-banquet-ink hover:bg-banquet-sand/50'
                 )}
               >
                 {config.labels?.createButton || 'Новая заявка'}
@@ -178,9 +180,10 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-banquet-peach bg-white py-4 text-center text-xs text-banquet-green">
-        <p>{config.contacts?.address}</p>
-        <p>{config.contacts?.phone}</p>
+      <footer className="border-t border-banquet-sand bg-white py-4 px-4 text-center">
+        <SocialLinks className="mb-2" />
+        <p className="text-xs text-banquet-muted">{config.contacts?.address}</p>
+        <p className="text-xs text-banquet-muted">{config.contacts?.phone}</p>
       </footer>
     </div>
   )

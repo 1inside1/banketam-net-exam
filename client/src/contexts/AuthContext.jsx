@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      // Проверяем токен и получаем данные пользователя
       authService.getProfile()
         .then(userData => {
           setUser(userData)

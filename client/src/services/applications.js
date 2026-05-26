@@ -21,7 +21,6 @@ export const applicationService = {
     return response.data
   },
 
-  // Admin methods
   getAllAdmin: async (params) => {
     const response = await api.get('/admin/applications', { params })
     return response.data

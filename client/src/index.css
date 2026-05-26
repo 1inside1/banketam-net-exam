@@ -2,55 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Oswald';
+  src: url('/fonts/Oswald-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('/fonts/Oswald-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @layer base {
   body {
-    @apply antialiased font-oswald bg-banquet-cream text-black;
+    @apply antialiased font-oswald;
+    background-color: theme('colors.banquet.cream');
+    color: theme('colors.banquet.ink');
   }
 
   h1 {
-    @apply text-[36px] text-banquet-red font-bold;
+    @apply text-[32px] font-bold tracking-tight;
+    color: theme('colors.banquet.navy');
   }
 
   h2 {
-    @apply text-2xl text-banquet-gold font-semibold;
+    @apply text-2xl font-semibold;
+    color: theme('colors.banquet.wine');
   }
 
   h3 {
-    @apply text-lg text-banquet-gold font-medium;
+    @apply text-lg font-medium;
+    color: theme('colors.banquet.taupe');
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-base font-medium rounded-lg shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
   .btn-primary {
-    @apply btn text-white bg-banquet-red hover:bg-primary-700 focus:ring-banquet-red;
+    @apply btn text-white;
+    background-color: theme('colors.banquet.wine');
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: theme('colors.banquet.wine-dark');
+  }
+
+  .btn-primary:focus {
+    --tw-ring-color: theme('colors.banquet.wine');
   }
   
   .btn-secondary {
-    @apply btn text-banquet-green bg-banquet-peach hover:bg-banquet-gold hover:text-white focus:ring-banquet-gold;
+    @apply btn border;
+    color: theme('colors.banquet.navy');
+    background-color: theme('colors.banquet.sand');
+    border-color: theme('colors.banquet.sand');
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: rgb(196 163 90 / 0.3);
   }
   
   .input {
-    @apply block w-full px-3 py-2 border border-banquet-gold rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-banquet-red focus:border-banquet-red text-base bg-white;
+    @apply block w-full px-3 py-2.5 rounded-lg shadow-sm text-base bg-white focus:outline-none focus:ring-2;
+    border: 1px solid theme('colors.banquet.sand');
+    color: theme('colors.banquet.ink');
+  }
+
+  .input::placeholder {
+    color: theme('colors.banquet.muted');
+  }
+
+  .input:focus {
+    border-color: theme('colors.banquet.wine');
+    --tw-ring-color: rgb(123 59 75 / 0.3);
   }
   
   .input-error {
-    @apply border-banquet-red text-banquet-red;
+    border-color: theme('colors.banquet.error');
+    color: theme('colors.banquet.error');
+  }
+
+  .input-error:focus {
+    border-color: theme('colors.banquet.error');
+    --tw-ring-color: rgb(180 35 24 / 0.3);
   }
   
   .label {
-    @apply block text-base font-medium text-banquet-green mb-1;
+    @apply block text-sm font-medium mb-1;
+    color: theme('colors.banquet.taupe');
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-banquet-peach;
+    @apply bg-white rounded-xl p-6;
+    box-shadow: theme('boxShadow.card');
+    border: 1px solid rgb(232 226 217 / 0.8);
   }
   
   .animate-in {
-    animation: fade-in 0.3s ease-in-out;
+    animation: fade-in 0.35s ease-out;
   }
 
   .app-shell {
@@ -58,12 +113,21 @@
     min-height: 844px;
     margin: 0 auto;
   }
+
+  .link-accent {
+    @apply font-medium underline-offset-2 hover:underline;
+    color: theme('colors.banquet.wine');
+  }
+
+  .link-accent:hover {
+    color: theme('colors.banquet.wine-dark');
+  }
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -72,9 +136,10 @@
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-banquet-gold rounded;
+  background-color: theme('colors.banquet.sand');
+  border-radius: 9999px;
 }

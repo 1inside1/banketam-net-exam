@@ -49,7 +49,6 @@ const Application = sequelize.define('Application', {
   timestamps: true
 });
 
-// Associations
 Application.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 User.hasMany(Application, { foreignKey: 'userId', as: 'applications' });
 

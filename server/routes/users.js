@@ -3,7 +3,6 @@ const router = express.Router();
 const { authMiddleware } = require('../middleware/auth');
 const { User } = require('../models');
 
-// Получить профиль текущего пользователя
 router.get('/profile', authMiddleware, async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
@@ -16,7 +15,6 @@ router.get('/profile', authMiddleware, async (req, res) => {
   }
 });
 
-// Обновить профиль
 router.put('/profile', authMiddleware, async (req, res) => {
   try {
     const { fullName, phone, email } = req.body;
