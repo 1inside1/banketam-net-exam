@@ -5,6 +5,8 @@ import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import PageLogo from '../components/PageLogo'
 import ImageSlider from '../components/ImageSlider'
+import QualityBlock from '../components/QualityBlock'
+import ContactsBlock from '../components/ContactsBlock'
 
 const rooms = [
   { img: '/assets/3505f015e0d26644e8e4c.jpg', label: 'Зал' },
@@ -45,14 +47,22 @@ export default function Dashboard() {
       <div>
         <h2>Наши помещения</h2>
         <div className="grid grid-cols-2 gap-3 mt-3">
-          {rooms.map((room) => (
-            <div key={room.label} className="rounded-xl overflow-hidden border border-banquet-peach shadow-sm bg-white">
+          {rooms.map((room, i) => (
+            <div
+              key={room.label}
+              className="rounded-xl overflow-hidden border border-banquet-peach shadow-sm bg-white animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
               <img src={room.img} alt={room.label} className="h-24 w-full object-cover" />
               <p className="text-center text-sm py-2.5 text-banquet-red font-medium">{room.label}</p>
             </div>
           ))}
         </div>
       </div>
+
+      <QualityBlock />
+
+      <ContactsBlock />
 
       <div className="card">
         <h3>Профиль</h3>
