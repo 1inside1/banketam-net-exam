@@ -8,15 +8,19 @@ export default function Register() {
   const { register: registerUser } = useAuth()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
+  const [serverError, setServerError] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = async (data) => {
     setIsLoading(true)
+    setServerError('')
     const result = await registerUser(data)
     setIsLoading(false)
     
     if (result.success) {
       navigate('/dashboard')
+    } else if (result.error) {
+      setServerError(result.error)
     }
   }
 
@@ -27,6 +31,9 @@ export default function Register() {
       image="/assets/1686676944_elles-top-p-letnyaya-ploshcha.jpg"
     >
       <form className="card space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        {serverError && (
+          <p className="text-sm text-banquet-red bg-banquet-peach/50 rounded-lg px-3 py-2">{serverError}</p>
+        )}
         <div>
           <label htmlFor="login" className="label">Логин</label>
           <input
@@ -40,7 +47,7 @@ export default function Register() {
             placeholder="latin123"
           />
           {errors.login && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.login.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.login.message}</p>
           )}
         </div>
 
@@ -56,7 +63,7 @@ export default function Register() {
             placeholder="Минимум 8 символов"
           />
           {errors.password && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.password.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.password.message}</p>
           )}
         </div>
 
@@ -72,7 +79,7 @@ export default function Register() {
             placeholder="Иванов Иван Иванович"
           />
           {errors.fullName && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.fullName.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.fullName.message}</p>
           )}
         </div>
 
@@ -85,7 +92,7 @@ export default function Register() {
             placeholder="+7 (999) 123-45-67"
           />
           {errors.phone && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.phone.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.phone.message}</p>
           )}
         </div>
 
@@ -104,7 +111,7 @@ export default function Register() {
             placeholder="user@mail.ru"
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.email.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.email.message}</p>
           )}
         </div>
 

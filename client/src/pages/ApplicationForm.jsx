@@ -103,7 +103,7 @@ export default function ApplicationForm() {
               placeholder={field.placeholder || 'ДД.ММ.ГГГГ'}
             />
             {errors[field.name] && (
-              <p className="mt-1 text-sm text-banquet-error">{errors[field.name].message}</p>
+              <p className="mt-1 text-sm text-banquet-red">{errors[field.name].message}</p>
             )}
           </div>
         )
@@ -198,18 +198,18 @@ export default function ApplicationForm() {
     <div className="max-w-2xl mx-auto animate-in">
       <div className="relative rounded-lg overflow-hidden h-32 mb-4">
         <img src="/assets/f2fb9b7b5b497ab50072e4a0bb6efa01.jpg" alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-banquet-navy/75 to-transparent flex items-end p-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex items-end p-4">
           <h2 className="text-white text-xl drop-shadow-md !text-white">
             {config.labels?.createButton || 'Оформить бронирование'}
           </h2>
         </div>
       </div>
-      <div className="bg-white shadow-card sm:rounded-xl border border-banquet-sand">
+      <div className="bg-white shadow-card sm:rounded-xl border border-banquet-peach">
         <div className="px-4 py-5 sm:p-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
+          <h3 className="text-lg leading-6 font-medium text-banquet-red">
             {config.labels?.createButton || 'Новая заявка'}
           </h3>
-          <div className="mt-2 max-w-xl text-sm text-gray-500">
+          <div className="mt-2 max-w-xl text-sm text-secondary">
             <p>Заполните все обязательные поля для создания заявки.</p>
           </div>
           

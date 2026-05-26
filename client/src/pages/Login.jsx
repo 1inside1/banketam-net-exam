@@ -8,10 +8,12 @@ export default function Login() {
   const { login } = useAuth()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
+  const [authError, setAuthError] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = async (data) => {
     setIsLoading(true)
+    setAuthError('')
     const result = await login(data)
     setIsLoading(false)
     
@@ -21,6 +23,8 @@ export default function Login() {
       } else {
         navigate('/dashboard')
       }
+    } else if (result.error) {
+      setAuthError(result.error)
     }
   }
 
@@ -31,6 +35,9 @@ export default function Login() {
       image="/assets/66155ef0748e9.jpg"
     >
       <form className="card space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        {authError && (
+          <p className="text-sm text-banquet-red bg-banquet-peach/50 rounded-lg px-3 py-2">{authError}</p>
+        )}
         <div>
           <label htmlFor="login" className="label">Логин</label>
           <input
@@ -40,7 +47,7 @@ export default function Login() {
             placeholder="Введите логин"
           />
           {errors.login && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.login.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.login.message}</p>
           )}
         </div>
 
@@ -53,7 +60,7 @@ export default function Login() {
             placeholder="Введите пароль"
           />
           {errors.password && (
-            <p className="mt-1 text-sm text-banquet-error">{errors.password.message}</p>
+            <p className="mt-1 text-sm text-banquet-red">{errors.password.message}</p>
           )}
         </div>
 
