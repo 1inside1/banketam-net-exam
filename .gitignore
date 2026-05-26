@@ -3,5 +3,6 @@ dist/
 .env
 *.log
 .DS_Store
-client/public/fonts/_tmp/
-client/public/fonts/_oswald/
+/client/
+moduli-1-3-osnovnaya-chast/client/public/fonts/_tmp/
+moduli-1-3-osnovnaya-chast/client/public/fonts/_oswald/
