@@ -32,7 +32,7 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      is: /^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/
+      len: [5, 32]
     }
   },
   email: {
