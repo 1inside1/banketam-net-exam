@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useConfig } from '../contexts/ConfigContext'
 import { applicationService } from '../services/applications'
 import { format } from 'date-fns'
@@ -259,8 +260,8 @@ export default function AdminApplications() {
         </div>
       )}
 
-      {showStatusModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center p-4 z-50">
+      {showStatusModal && createPortal(
+        <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center p-4 z-[100]">
           <div className="bg-white rounded-xl max-w-md w-full p-5 animate-in">
             <h3 className="!text-xl mb-4">Изменить статус</h3>
 
@@ -306,7 +307,8 @@ export default function AdminApplications() {
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

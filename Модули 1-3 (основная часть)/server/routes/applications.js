@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { authMiddleware } = require('../middleware/auth');
 const { Application, User } = require('../models');
+const { isValidRussianDate } = require('../utils/dateValidation');
 
 router.get('/', authMiddleware, async (req, res) => {
   try {
@@ -24,6 +25,12 @@ router.get('/', authMiddleware, async (req, res) => {
 router.post('/', authMiddleware, async (req, res) => {
   try {
     const { type, data } = req.body;
+
+    if (data?.startDate && !isValidRussianDate(data.startDate)) {
+      return res.status(400).json({
+        message: 'Некорректная дата начала банкета. Формат: ДД.ММ.ГГГГ'
+      });
+    }
     
     const application = await Application.create({
       userId: req.user.id,

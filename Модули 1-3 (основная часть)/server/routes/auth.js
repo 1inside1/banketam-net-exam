@@ -4,11 +4,13 @@ const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
+const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+
 router.post('/register', [
   body('login').isLength({ min: 6 }).matches(/^[a-zA-Z0-9]+$/),
   body('password').isLength({ min: 8 }),
   body('fullName').matches(/^[а-яА-ЯёЁ\s]+$/),
-  body('phone').notEmpty().withMessage('Укажите телефон'),
+  body('phone').matches(phonePattern).withMessage('Формат: +7 (999) 123-45-67'),
   body('email').isEmail()
 ], async (req, res) => {
   try {

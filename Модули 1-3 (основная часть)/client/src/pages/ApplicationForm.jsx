@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useConfig } from '../contexts/ConfigContext'
 import { applicationService } from '../services/applications'
+import { validateRussianDate } from '../utils/dateValidation'
 import toast from 'react-hot-toast'
 
 export default function ApplicationForm() {
@@ -21,7 +22,8 @@ export default function ApplicationForm() {
       toast.success('Заявка успешно создана!')
       navigate('/applications')
     } catch (error) {
-      toast.error('Ошибка при создании заявки')
+      const message = error.response?.data?.message || 'Ошибка при создании заявки'
+      toast.error(message)
     }
     setIsLoading(false)
   }
@@ -91,14 +93,11 @@ export default function ApplicationForm() {
             <input
               {...register(field.name, {
                 ...(field.required ? { required: `${field.label} обязательно` } : {}),
-                ...(field.validation?.pattern ? {
-                  pattern: {
-                    value: field.validation.pattern,
-                    message: field.validation.message || 'Неверный формат'
-                  }
-                } : {})
+                validate: validateRussianDate
               })}
               type="text"
+              inputMode="numeric"
+              maxLength={10}
               className={`input ${errors[field.name] ? 'input-error' : ''}`}
               placeholder={field.placeholder || 'ДД.ММ.ГГГГ'}
             />

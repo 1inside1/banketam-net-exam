@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 import { useAuth } from '../contexts/AuthContext'
 import AuthLayout from '../components/AuthLayout'
 
+const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/
+
 export default function Register() {
   const { register: registerUser } = useAuth()
   const navigate = useNavigate()
@@ -86,7 +88,13 @@ export default function Register() {
         <div>
           <label htmlFor="phone" className="label">Телефон</label>
           <input
-            {...register('phone', { required: 'Введите телефон' })}
+            {...register('phone', {
+              required: 'Введите телефон',
+              pattern: {
+                value: phonePattern,
+                message: 'Формат: +7 (999) 123-45-67'
+              }
+            })}
             type="tel"
             className={`input ${errors.phone ? 'input-error' : ''}`}
             placeholder="+7 (999) 123-45-67"

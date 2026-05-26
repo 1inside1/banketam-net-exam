@@ -1,4 +1,5 @@
 import PageLogo from './PageLogo'
+import SocialLinks from './SocialLinks'
 
 export default function AuthLayout({ title, subtitle, children, image = '/assets/04.png' }) {
   return (
@@ -26,11 +27,7 @@ export default function AuthLayout({ title, subtitle, children, image = '/assets
       </div>
 
       <footer className="px-4 pb-8 flex flex-col items-center gap-3">
-        <div className="flex items-center gap-4 opacity-80">
-          <img src="/social/social.png" alt="" className="h-7 w-7 object-contain" />
-          <img src="/social/soc.png" alt="" className="h-7 w-7 object-contain" />
-          <img src="/social/social.jpg" alt="" className="h-7 w-7 object-contain rounded-full" />
-        </div>
+        <SocialLinks />
         <p className="text-secondary text-center">Банкетам.Нет — бронирование банкетных залов</p>
       </footer>
     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useConfig } from '../contexts/ConfigContext'
 import { applicationService } from '../services/applications'
@@ -145,8 +146,8 @@ export default function Applications() {
         </div>
       )}
 
-      {showReviewModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center p-4 z-50">
+      {showReviewModal && createPortal(
+        <div className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center p-4 z-[100]">
           <div className="bg-white rounded-xl max-w-md w-full p-5 animate-in">
             <h3 className="!text-xl mb-4">Оставить отзыв</h3>
 
@@ -197,7 +198,8 @@ export default function Applications() {
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )
