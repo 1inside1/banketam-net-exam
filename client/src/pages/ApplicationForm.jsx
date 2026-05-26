@@ -179,7 +179,7 @@ export default function ApplicationForm() {
                     value={option.value}
                     className="mr-2 text-primary-600 focus:ring-primary-500"
                   />
-                  <span className="text-sm text-gray-700">{option.label}</span>
+                  <span className="text-sm text-banquet-ink">{option.label}</span>
                 </label>
               ))}
             </div>

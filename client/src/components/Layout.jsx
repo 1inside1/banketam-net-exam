@@ -94,12 +94,12 @@ export default function Layout() {
             </nav>
 
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-banquet-ink">
                 {user.fullName} ({user.role === 'admin' ? 'Администратор' : 'Пользователь'})
               </span>
               <button
                 onClick={handleLogout}
-                className="text-sm font-medium text-gray-500 hover:text-gray-900"
+                className="text-sm font-medium text-banquet-green hover:text-banquet-red transition-colors"
               >
                 Выйти
               </button>
@@ -109,7 +109,7 @@ export default function Layout() {
       </header>
 
       {/* Mobile menu */}
-      <nav className="md:hidden bg-white border-b border-gray-200">
+      <nav className="md:hidden bg-white border-b border-banquet-peach">
         <div className="px-4 py-2 space-y-1">
           {user.role === 'admin' ? (
             <>

@@ -102,6 +102,13 @@ export default function Applications() {
                 ))}
               </dl>
 
+              {app.adminComment && (
+                <p className="mt-3 text-sm rounded-lg bg-banquet-peach/40 p-3">
+                  <span className="font-medium text-banquet-red">Комментарий администратора: </span>
+                  {app.adminComment}
+                </p>
+              )}
+
               {app.rating && (
                 <div className="mt-3 rounded-lg bg-banquet-cream p-3">
                   <div className="flex items-center gap-1">

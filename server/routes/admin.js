@@ -56,8 +56,13 @@ router.put('/applications/:id/status', authMiddleware, adminMiddleware, async (r
     if (!application) {
       return res.status(404).json({ message: 'Заявка не найдена' });
     }
+
+    const updates = { status };
+    if (typeof adminComment === 'string' && adminComment.trim()) {
+      updates.adminComment = adminComment.trim();
+    }
     
-    await application.update({ status, adminComment });
+    await application.update(updates);
     
     res.json({
       message: 'Статус заявки обновлен',

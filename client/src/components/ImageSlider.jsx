@@ -10,6 +10,7 @@ const SLIDES = [
 
 export default function ImageSlider() {
   const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
 
   const next = useCallback(() => {
     setIndex((i) => (i + 1) % SLIDES.length)
@@ -20,12 +21,17 @@ export default function ImageSlider() {
   }, [])
 
   useEffect(() => {
+    if (paused) return
     const timer = setInterval(next, 3000)
     return () => clearInterval(timer)
-  }, [next])
+  }, [next, paused])
 
   return (
-    <div className="relative rounded-xl overflow-hidden shadow-card border border-banquet-peach">
+    <div
+      className="relative rounded-xl overflow-hidden shadow-card border border-banquet-peach"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="relative aspect-[390/220] w-full bg-banquet-peach">
         {SLIDES.map((slide, i) => (
           <img

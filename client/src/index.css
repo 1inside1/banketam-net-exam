@@ -51,6 +51,11 @@
 
   .btn-primary:hover:not(:disabled) {
     background-color: #B01030;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
   }
 
   .btn-primary:focus {
@@ -67,6 +72,11 @@
   .btn-secondary:hover:not(:disabled) {
     background-color: theme('colors.banquet.gold');
     color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:active:not(:disabled) {
+    transform: scale(0.98);
   }
   
   .input {
@@ -100,13 +110,21 @@
   }
   
   .card {
-    @apply bg-white rounded-xl p-6;
+    @apply bg-white rounded-xl p-6 transition-transform duration-200;
     box-shadow: theme('boxShadow.card');
     border: 1px solid theme('colors.banquet.peach');
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
   }
   
   .animate-in {
     animation: fade-in 0.35s ease-out;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.45s ease-out both;
   }
 
   .app-shell {
@@ -127,6 +145,17 @@
   .text-secondary {
     @apply text-xs;
     color: theme('colors.banquet.green');
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
