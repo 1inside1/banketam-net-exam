@@ -12,17 +12,23 @@ const Application = sequelize.define('Application', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: User,
+      model: 'users',
       key: 'id'
-    }
+    },
+    onDelete: 'CASCADE'
   },
   status: {
-    type: DataTypes.ENUM('new', 'assigned', 'completed'),
-    defaultValue: 'new'
+    type: DataTypes.STRING(32),
+    allowNull: false,
+    defaultValue: 'new',
+    validate: {
+      isIn: [['new', 'assigned', 'completed']]
+    }
   },
   type: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING(64),
+    allowNull: false,
+    defaultValue: 'banquet_booking'
   },
   data: {
     type: DataTypes.JSONB,
@@ -34,7 +40,7 @@ const Application = sequelize.define('Application', {
     allowNull: true
   },
   rating: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.SMALLINT,
     allowNull: true,
     validate: {
       min: 1,
@@ -46,6 +52,8 @@ const Application = sequelize.define('Application', {
     allowNull: true
   }
 }, {
+  tableName: 'applications',
+  underscored: true,
   timestamps: true
 });
 

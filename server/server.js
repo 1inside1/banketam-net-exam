@@ -25,7 +25,7 @@ async function start() {
     await sequelize.authenticate();
     console.log('База данных подключена');
 
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: false });
     console.log('Модели синхронизированы');
 
     const { User } = require('./models');

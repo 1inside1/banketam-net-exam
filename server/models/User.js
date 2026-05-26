@@ -43,10 +43,16 @@ const User = sequelize.define('User', {
     }
   },
   role: {
-    type: DataTypes.ENUM('user', 'admin'),
-    defaultValue: 'user'
+    type: DataTypes.STRING(16),
+    allowNull: false,
+    defaultValue: 'user',
+    validate: {
+      isIn: [['user', 'admin']]
+    }
   }
 }, {
+  tableName: 'users',
+  underscored: true,
   hooks: {
     beforeCreate: async (user) => {
       const salt = await bcrypt.genSalt(10);
