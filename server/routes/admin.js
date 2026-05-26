@@ -6,11 +6,15 @@ const { Op } = require('sequelize');
 
 router.get('/applications', authMiddleware, adminMiddleware, async (req, res) => {
   try {
-    const { status, type, search, page = 1, limit = 10 } = req.query;
+    const { status, type, search, page = 1, limit = 10, sortBy = 'createdAt', sortOrder = 'DESC' } = req.query;
     
     const where = {};
     if (status) where.status = status;
     if (type) where.type = type;
+
+    const allowedSort = ['createdAt', 'status', 'id'];
+    const orderField = allowedSort.includes(sortBy) ? sortBy : 'createdAt';
+    const orderDir = sortOrder === 'ASC' ? 'ASC' : 'DESC';
     
     const applications = await Application.findAndCountAll({
       where,
@@ -26,7 +30,7 @@ router.get('/applications', authMiddleware, adminMiddleware, async (req, res) =>
           ]
         } : undefined
       }],
-      order: [['createdAt', 'DESC']],
+      order: [[orderField, orderDir]],
       limit: parseInt(limit),
       offset: (parseInt(page) - 1) * parseInt(limit)
     });
