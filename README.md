@@ -9,8 +9,8 @@
 ## Структура проекта
 
 ```
-├── moduli-1-3-osnovnaya-chast/   Банкетам.Нет (React + Express + PostgreSQL)
-├── modul-4-variativnaya-chast/   Код безопасности (HTML + CSS, 430×932)
+├── Модули 1-3 (основная часть)/   Банкетам.Нет (React + Express + PostgreSQL)
+├── Модуль 4 (вариативная часть)/  Код безопасности (HTML + CSS, 430×932)
 └── README.md
 ```
 
@@ -40,10 +40,10 @@ npm run dev
 
 ### База данных
 
-![ER-диаграмма](moduli-1-3-osnovnaya-chast/database/er-diagram.drawio.png)
+![ER-диаграмма](Модули%201-3%20(основная%20часть)/database/er-diagram.drawio.png)
 
-- `moduli-1-3-osnovnaya-chast/database/init.sql` — SQL-схема
-- `moduli-1-3-osnovnaya-chast/database/er-diagram.drawio` — ER-диаграмма
+- `Модули 1-3 (основная часть)/database/init.sql` — SQL-схема
+- `Модули 1-3 (основная часть)/database/er-diagram.drawio` — ER-диаграмма
 
 ---
 
@@ -53,8 +53,8 @@ npm run dev
 
 | Файл | Экран |
 |------|-------|
-| `modul-4-variativnaya-chast/index.html` | Главная — статистика, кнопка «Каталог» |
-| `modul-4-variativnaya-chast/products.html` | Каталог продуктов — поиск, список |
+| `Модуль 4 (вариативная часть)/index.html` | Главная — статистика, кнопка «Каталог» |
+| `Модуль 4 (вариативная часть)/products.html` | Каталог продуктов — поиск, список |
 
 Переходы: **Главная ↔ Продукты** (кнопка и нижнее меню).
 
@@ -63,10 +63,10 @@ npm run dev
 Открой в браузере:
 
 ```
-modul-4-variativnaya-chast/index.html
+Модуль 4 (вариативная часть)/index.html
 ```
 
-Ассеты из папки `Медиа` задания — в `modul-4-variativnaya-chast/media/`.
+Ассеты из папки `Медиа` задания — в `Модуль 4 (вариативная часть)/media/`.
 
 ---
 
