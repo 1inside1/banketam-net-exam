@@ -1,0 +1,64 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
+const bcrypt = require('bcryptjs');
+
+const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  login: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      len: [6, 50],
+      is: /^[a-zA-Z0-9]+$/
+    }
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  fullName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      is: /^[а-яА-ЯёЁ\s]+$/i
+    }
+  },
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      is: /^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/
+    }
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
+  },
+  role: {
+    type: DataTypes.ENUM('user', 'admin'),
+    defaultValue: 'user'
+  }
+}, {
+  hooks: {
+    beforeCreate: async (user) => {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(user.password, salt);
+    }
+  },
+  timestamps: true
+});
+
+// Метод для проверки пароля
+User.prototype.validatePassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+module.exports = User;

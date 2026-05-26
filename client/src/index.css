@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased font-oswald bg-banquet-cream text-black;
+  }
+
+  h1 {
+    @apply text-[36px] text-banquet-red font-bold;
+  }
+
+  h2 {
+    @apply text-2xl text-banquet-gold font-semibold;
+  }
+
+  h3 {
+    @apply text-lg text-banquet-gold font-medium;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn text-white bg-banquet-red hover:bg-primary-700 focus:ring-banquet-red;
+  }
+  
+  .btn-secondary {
+    @apply btn text-banquet-green bg-banquet-peach hover:bg-banquet-gold hover:text-white focus:ring-banquet-gold;
+  }
+  
+  .input {
+    @apply block w-full px-3 py-2 border border-banquet-gold rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-banquet-red focus:border-banquet-red text-base bg-white;
+  }
+  
+  .input-error {
+    @apply border-banquet-red text-banquet-red;
+  }
+  
+  .label {
+    @apply block text-base font-medium text-banquet-green mb-1;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-banquet-peach;
+  }
+  
+  .animate-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+
+  .app-shell {
+    max-width: 390px;
+    min-height: 844px;
+    margin: 0 auto;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-banquet-gold rounded;
+}
